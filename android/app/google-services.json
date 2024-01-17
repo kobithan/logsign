@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "91631433862",
+    "project_id": "reservation-74e17",
+    "storage_bucket": "reservation-74e17.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:91631433862:android:bb852634bc9c1a7a763907",
+        "android_client_info": {
+          "package_name": "com.example.flutter_firebase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDllAhV683wb9eIEoZWwW0kwRt2pCImT7E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
