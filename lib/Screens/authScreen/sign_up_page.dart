@@ -1,9 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_firebase/features/user_auth/firebase_auth_implementation/firebase_auth_services.dart';
-import 'package:flutter_firebase/features/user_auth/presentation/pages/login_page.dart';
-import 'package:flutter_firebase/features/user_auth/presentation/widgets/form_container_widget.dart';
-import 'package:flutter_firebase/global/common/toast.dart';
+import 'package:flutter_firebase/Screens/authScreen/login_page.dart';
+import 'package:flutter_firebase/Services/firebase_auth_services.dart';
+import 'package:flutter_firebase/Widgets/form_container_widget.dart';
+import 'package:flutter_firebase/Widgets/toast.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -74,9 +74,8 @@ class _SignUpPageState extends State<SignUpPage> {
                 height: 30,
               ),
               GestureDetector(
-                onTap:  (){
+                onTap: () {
                   _signUp();
-
                 },
                 child: Container(
                   width: double.infinity,
@@ -86,11 +85,16 @@ class _SignUpPageState extends State<SignUpPage> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Center(
-                      child: isSigningUp ? CircularProgressIndicator(color: Colors.white,):Text(
-                    "Sign Up",
-                    style: TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.bold),
-                  )),
+                      child: isSigningUp
+                          ? CircularProgressIndicator(
+                              color: Colors.white,
+                            )
+                          : Text(
+                              "Sign Up",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold),
+                            )),
                 ),
               ),
               SizedBox(
@@ -126,10 +130,9 @@ class _SignUpPageState extends State<SignUpPage> {
   }
 
   void _signUp() async {
-
-setState(() {
-  isSigningUp = true;
-});
+    setState(() {
+      isSigningUp = true;
+    });
 
     String username = _usernameController.text;
     String email = _emailController.text;
@@ -137,9 +140,9 @@ setState(() {
 
     User? user = await _auth.signUpWithEmailAndPassword(email, password);
 
-setState(() {
-  isSigningUp = false;
-});
+    setState(() {
+      isSigningUp = false;
+    });
     if (user != null) {
       showToast(message: "User is successfully created");
       Navigator.pushNamed(context, "/home");
