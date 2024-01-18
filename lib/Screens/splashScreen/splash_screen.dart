@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class SplashScreen extends StatefulWidget {
   final Widget? child;
@@ -11,7 +12,7 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    Future.delayed(Duration(seconds: 3), () {
+    Future.delayed(Duration(seconds: 4), () {
       Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(builder: (context) => widget.child!),
@@ -24,11 +25,26 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text(
-          "Welcome To Restaurants Reservation",
-          textAlign: TextAlign.center,
-          style: TextStyle(
-              color: Colors.black, fontWeight: FontWeight.bold, fontSize: 25),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Image.asset(
+              'assets/logo2.png',
+              height: 200,
+              width: 200,
+            ),
+            LinearPercentIndicator(
+              width: MediaQuery.of(context).size.width,
+              animation: true,
+              lineHeight: 10.0,
+              animationDuration: 2900,
+              percent: 1,
+              barRadius: const Radius.circular(16),
+              progressColor: Colors.black,
+              backgroundColor: Colors.grey,
+            )
+          ],
         ),
       ),
     );

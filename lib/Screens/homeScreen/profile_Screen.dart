@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_firebase/Screens/authScreen/login_page.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -41,9 +42,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                // Add functionality to save the profile
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => LoginPage()),
+                  (route) => false,
+                );
               },
-              child: Text('Save Profile'),
+              child: Text('Sign Out'),
             ),
           ],
         ),

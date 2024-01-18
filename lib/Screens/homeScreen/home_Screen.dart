@@ -15,52 +15,118 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Swiper(
-      onTap: (index) {
-        _showBottomSheet(context, index);
-      },
-      itemBuilder: (context, index) {
-        return Center(
-          child: Padding(
-            padding: const EdgeInsets.all(40.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  height: 500,
-                  width: 500,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    image: DecorationImage(
-                      image: NetworkImage(restaurants[index]['image']),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-                Text(
-                  restaurants[index]['name'],
-                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                ),
-                Text(restaurants[index]['location']),
-                Text(restaurants[index]['price'])
-              ],
+    // return Scaffold(
+    //     body: Swiper(
+    //   onTap: (index) {
+    //     _showBottomSheet(context, index);
+    //   },
+    //   itemBuilder: (context, index) {
+    //     return Center(
+    //       child: Padding(
+    //         padding: const EdgeInsets.all(40.0),
+    //         child: Column(
+    //           crossAxisAlignment: CrossAxisAlignment.start,
+    //           children: [
+    //             Container(
+    //               height: 500,
+    //               width: 500,
+    //               decoration: BoxDecoration(
+    //                 borderRadius: BorderRadius.circular(15),
+    //                 image: DecorationImage(
+    //                   image: NetworkImage(restaurants[index]['image']),
+    //                   fit: BoxFit.cover,
+    //                 ),
+    //               ),
+    //             ),
+    //             Text(
+    //               restaurants[index]['name'],
+    //               style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+    //             ),
+    //             Text(restaurants[index]['location']),
+    //             Text(restaurants[index]['price'])
+    //           ],
+    //         ),
+    //       ),
+    //     );
+    //   },
+    //   autoplay: true,
+    //   itemCount: restaurants.length,
+    //   scrollDirection: Axis.horizontal,
+    //   // pagination: const SwiperPagination(alignment: Alignment.centerRight),
+    //   control: const SwiperControl(),
+    // ));
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('Hello!'),
+            Text('Find and book'),
+            Text(
+              'The best restaurants',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
             ),
-          ),
-        );
-      },
-      autoplay: true,
-      itemCount: restaurants.length,
-      scrollDirection: Axis.horizontal,
-      // pagination: const SwiperPagination(alignment: Alignment.centerRight),
-      control: const SwiperControl(),
-    ));
+            Text(
+              'Featured',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+            ),
+            Container(
+              height: 500,
+              child: Swiper(
+                onTap: (index) {
+                  _showBottomSheet(context, index);
+                },
+                itemBuilder: (context, index) {
+                  return Center(
+                    child: Padding(
+                      padding: const EdgeInsets.all(40.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            height: 300,
+                            width: 500,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15),
+                              image: DecorationImage(
+                                image:
+                                    NetworkImage(restaurants[index]['image']),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                          Text(
+                            restaurants[index]['name'],
+                            style: TextStyle(
+                                fontSize: 25, fontWeight: FontWeight.bold),
+                          ),
+                          Text(restaurants[index]['location']),
+                          Text(restaurants[index]['price'])
+                        ],
+                      ),
+                    ),
+                  );
+                },
+                autoplay: false,
+                itemCount: restaurants.length,
+                scrollDirection: Axis.horizontal,
+                // pagination: const SwiperPagination(alignment: Alignment.centerRight),
+                control: const SwiperControl(),
+              ),
+            )
+          ],
+        ),
+      ),
+    );
   }
 }
 
 void _showBottomSheet(BuildContext context, int index) {
   showModalBottomSheet(
       context: context,
+      isScrollControlled: true,
+      constraints: BoxConstraints.loose(Size.fromHeight(750)),
       builder: (context) {
         return Column(
           mainAxisSize: MainAxisSize.max,

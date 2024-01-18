@@ -38,18 +38,16 @@ class _LoginPageState extends State<LoginPage> {
         automaticallyImplyLeading: false,
         // title: Text("Login"),
       ),
-      body: Center(
+      body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                "Login",
-                style: TextStyle(fontSize: 27, fontWeight: FontWeight.bold),
-              ),
-              SizedBox(
-                height: 30,
+              Image.asset(
+                'assets/logo2.png',
+                height: 200,
+                width: 200,
               ),
               FormContainerWidget(
                 controller: _emailController,
@@ -180,6 +178,7 @@ class _LoginPageState extends State<LoginPage> {
     });
 
     if (user != null) {
+      print('user $user');
       showToast(message: "User is successfully signed in");
       Navigator.pushNamed(context, "/home");
     } else {

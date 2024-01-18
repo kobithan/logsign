@@ -27,7 +27,7 @@ class _LandingScreenState extends State<LandingScreen> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Text(_currentIndex == 0
-            ? "Let's Explore Restaurants"
+            ? ""
             : _currentIndex == 1
                 ? 'Reserved restaurants '
                 : 'Profile'),
